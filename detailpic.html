@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>quanquan's site</title>
+	<link rel="stylesheet" href="images/base.css">
+	<link rel="stylesheet" href="images/layout.css">
+</head>
+<body>
+<div class="container clearfix">
+	<div class="leftpart">
+	<div class="leftcont">
+		<div class="infor">
+			<p>圈圈圈 </p>
+			<span>UI设计师<br>
+			</span>
+		</div>
+		<div class="nav">
+			<ul>
+				<li><a href="./index.html">图标及主题作品</a></li>
+				<li><a href="./works.html">工作及上线项目</a></li>
+				<li><a href="./sketch.html">素描作品</a></li>
+				<li class="curr"><a href="./illustration.html">插画作品</a></li>
+				<li><a href="./infor.html">关于我</a></li>
+			</ul>
+		</div>
+		<div class="link">
+			<a  class="ico1" href="http://www.zcool.com.cn/u/13255050"></a>
+			<a class="ico2" href=""></a>
+		</div>
+	</div>
+		
+	</div>
+	<div class="rightpart clearfix">
+	 <div class="showpic fl">
+	 	<img id="img-box" src="" alt="">  
+	 </div>
+	  <div class="trbutton fl">
+	  	<a id="cutimg" class="former"></a>
+	  	<a id="addimg" class="next"></a>
+	  	<a href="" class="return"></a>
+	  </div>
+	
+	</div>
+</div>
+	
+
+
+
+
+<script>
+	//图片数量
+	var imgMax = location.search.split("max")[1].split("=")[1].split("&")[0];
+	
+	window.onload = function(){
+		//设置返回的按钮链接
+		var backpage = location.search.split("back")[1].split("=")[1];
+		document.getElementsByClassName("return")[0].setAttribute("href","./"+backpage+".html");
+		//设置导航栏的active
+		var navli = document.getElementsByClassName("nav")[0].getElementsByTagName("li");
+		for(var i = navli.length;i--;){
+			navli[i].className = "";
+			
+			if(navli[i].getElementsByTagName("a")[0].getAttribute("href").indexOf(backpage)>=0){
+				navli[i].className = "curr";
+			}
+		}
+		
+		var imgbox = document.getElementById("img-box");
+		var params = location.search.split("&");
+		//图片名字
+		var imgname = params[0].split("=")[1];
+		//图片编号
+		var imgnum = imgname.split(".")[0];
+		imgnum = imgnum[imgnum.length-2]+imgnum[imgnum.length-1];
+		
+		imgbox.setAttribute("src","./images/"+imgname);
+		
+		
+		document.getElementById("addimg").addEventListener("click",addImgNumber);
+		//增加图片编号
+		function addImgNumber(){
+			console.log(imgnum)
+				console.log(imgMax)
+			if(parseInt(imgnum)<imgMax){
+				// debugger;
+				if(parseInt(imgnum)<9){
+					location.search = "?img="+imgname.substring(0,imgname.length-6)+"0"+(parseInt(imgnum)+1)+"."+imgname.split(".")[1]+"&max="+imgMax+"&back="+backpage;
+				}else{
+					location.search = "?img="+imgname.substring(0,imgname.length-6)+(parseInt(imgnum)+1)+"."+imgname.split(".")[1]+"&max="+imgMax+"&back="+backpage;
+				}
+			}
+		}
+		
+		document.getElementById("cutimg").addEventListener("click",cutImgNumber);
+		//减少图片编号
+		function cutImgNumber(){
+			if(imgnum>1){
+				console.log("?img="+imgname.substring(0,imgname.length-6)+"0"+(parseInt(imgnum)-1).toString()+"."+imgname.split(".")[1]+"&max="+imgMax)
+				console.log(parseInt(imgnum));
+				// debugger;
+				if(parseInt(imgnum)<=10){
+					location.search = "?img="+imgname.substring(0,imgname.length-6)+"0"+(parseInt(imgnum)-1).toString()+"."+imgname.split(".")[1]+"&max="+imgMax+"&back="+backpage;
+				}else{
+					location.search = "?img="+imgname.substring(0,imgname.length-6)+(parseInt(imgnum)-1)+"."+imgname.split(".")[1]+"&max="+imgMax+"&back="+backpage;
+				}
+			}
+		}
+	}
+</script>
+
+
+
+
+
+
+
+</body>
+</html>

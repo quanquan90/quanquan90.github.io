@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>quanquan's site</title>
+	<link rel="stylesheet" href="images/base.css">
+	<link rel="stylesheet" href="images/layout.css">
+</head>
+
+<body>
+	<div class="container clearfix">
+		<div class="leftpart">
+			<div class="leftcont">
+				<div class="infor">
+					<p>圈圈圈 </p>
+					<span>UI设计师<br>
+			</span>
+				</div>
+				<div class="nav">
+					<ul>
+						<li><a href="./index.html">图标及主题作品</a></li>
+						<li><a href="./works.html">工作及上线项目</a></li>
+						<li><a href="./sketch.html">素描作品</a></li>
+						<li class="curr"><a href="./illustration.html">插画作品</a></li>
+						<li><a href="./infor.html">关于我</a></li>
+					</ul>
+				</div>
+				<div class="link">
+					<a class="ico1" href="http://www.zcool.com.cn/u/13255050"></a>
+					<a class="ico2" href=""></a>
+				</div>
+			</div>
+
+		</div>
+		<div class="rightpart">
+			<div class="picbox">
+				<a href="./detailpic.html">
+					<img src="images/illustration01.jpg" alt="">
+				</a>
+			</div>
+			<div class="picbox">
+				<a href="./detailpic.html">
+					<img src="images/illustration02.jpg" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+	<script>
+		//图片数量
+		var imgMax = document.getElementsByClassName("picbox").length;
+	
+	
+		window.onload = function(){
+			var arrUrl = location.href.split("/");
+			var backpage = arrUrl[arrUrl.length-1].split(".")[0];
+			
+			//添加图片名字
+			var links = document.getElementsByClassName("picbox");
+			for(var i = links.length;i--;){
+				var aLink = links[i].getElementsByTagName("a");
+				
+				for(var a = aLink.length;a--;){
+					
+					var oldurl = aLink[a].getAttribute("href");
+					var imgname = aLink[a].getElementsByTagName("img")[0].getAttribute("src").split("/")[1];
+					aLink[a].setAttribute("href",oldurl+"?"+"img="+imgname+"&max="+imgMax+"&back="+backpage);
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>
