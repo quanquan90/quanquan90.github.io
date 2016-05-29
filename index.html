@@ -26,49 +26,49 @@
 		</div>
 		<div class="link">
 			<a  class="ico1" href="http://www.zcool.com.cn/u/13255050"></a>
-			<a class="ico2" href="mailto:317708955@qq.com?cc=someoneelse@microsoft.com&bcc=andsomeoneelse2@microsoft.com&subject=Summer%20Party&body=You%20are%20invited%20to%20a%20big%20summer%20party!"></a>
+			<a class="ico2" href="mailto:317708955@qq.com"></a>
 		</div>
 	</div>
-		
+
 	</div>
 	<div class="rightpart">
 		<div class="picbox">
 			<a href="./detailpic.html">
-					<img src="images/theme01.jpg" alt="">
+					<img src="images/theme01.png" alt="">
 				</a>
 		</div>
 		<div class="picbox">
 			<a href="./detailpic.html">
-					<img src="images/theme02.jpg" alt="">
+					<img src="images/theme02.png" alt="">
 				</a>
 		</div>
 		<div class="picbox">
 			<a href="./detailpic.html">
-					<img src="images/theme03.jpg" alt="">
+					<img src="images/theme03.png" alt="">
 				</a>
 		</div>
 	</div>
 </div>
-	
+
 	<script>
 		//图片数量
 		var imgMax = document.getElementsByClassName("picbox").length;
-	
-	
+
+
 		window.onload = function(){
 			var arrUrl = location.href.split("/");
 			var backpage = arrUrl[arrUrl.length-1].split(".")[0];
-			
+
 			//添加图片名字
 			var links = document.getElementsByClassName("picbox");
 			for(var i = links.length;i--;){
 				var aLink = links[i].getElementsByTagName("a");
-				
+
 				for(var a = aLink.length;a--;){
-					
+
 					var oldurl = aLink[a].getAttribute("href");
 					var imgname = aLink[a].getElementsByTagName("img")[0].getAttribute("src").split("/")[1];
-					aLink[a].setAttribute("href",oldurl+"?"+"img="+imgname+"&max="+imgMax+"&back="+backpage);
+					aLink[a].setAttribute("href",oldurl+"?"+"img="+imgname.replace('.png','.jpg')+"&max="+imgMax+"&back="+backpage);
 				}
 			}
 		}
