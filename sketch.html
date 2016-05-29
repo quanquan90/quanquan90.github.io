@@ -29,55 +29,55 @@
 			<a class="ico2" href=""></a>
 		</div>
 	</div>
-		
+
 	</div>
 	<div class="rightpart">
 		<div class="picbox">
 			<a href="./detailpic.html">
-					<img src="images/sketch01.jpg" alt="">
+					<img src="images/sketch01.png" alt="">
 				</a>
 			<a href="./detailpic.html">
-					<img src="images/sketch02.jpg" alt="">
-				</a>
-		</div>
-		<div class="picbox">
-			<a href="./detailpic.html">
-					<img src="images/sketch03.jpg" alt="">
-				</a>
-			<a href="./detailpic.html">
-					<img src="images/sketch04.jpg" alt="">
+					<img src="images/sketch02.png" alt="">
 				</a>
 		</div>
 		<div class="picbox">
 			<a href="./detailpic.html">
-					<img src="images/sketch05.jpg" alt="">
+					<img src="images/sketch03.png" alt="">
 				</a>
 			<a href="./detailpic.html">
-					<img src="images/sketch06.jpg" alt="">
+					<img src="images/sketch04.png" alt="">
+				</a>
+		</div>
+		<div class="picbox">
+			<a href="./detailpic.html">
+					<img src="images/sketch05.png" alt="">
+				</a>
+			<a href="./detailpic.html">
+					<img src="images/sketch06.png" alt="">
 				</a>
 		</div>
 	</div>
 </div>
-	
+
 	<script>
 		//图片数量
 		var imgMax = document.getElementsByClassName("rightpart")[0].getElementsByTagName("a").length;
-	
-	
+
+
 		window.onload = function(){
 			var arrUrl = location.href.split("/");
 			var backpage = arrUrl[arrUrl.length-1].split(".")[0];
-			
+
 			//添加图片名字
 			var links = document.getElementsByClassName("picbox");
 			for(var i = links.length;i--;){
 				var aLink = links[i].getElementsByTagName("a");
-				
+
 				for(var a = aLink.length;a--;){
-					
+
 					var oldurl = aLink[a].getAttribute("href");
 					var imgname = aLink[a].getElementsByTagName("img")[0].getAttribute("src").split("/")[1];
-					aLink[a].setAttribute("href",oldurl+"?"+"img="+imgname+"&max="+imgMax+"&back="+backpage);
+					aLink[a].setAttribute("href",oldurl+"?"+"img="+imgname.replace('.png','.jpg')+"&max="+imgMax+"&back="+backpage);
 				}
 			}
 		}
