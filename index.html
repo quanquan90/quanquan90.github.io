@@ -64,7 +64,7 @@
 	</div>
 	<script>
 		//图片数量
-		var imgMax = document.getElementsByClassName("picbox").length;
+		var imgMax = document.getElementsByClassName("img").length;
 
 
 		window.onload = function(){
@@ -72,7 +72,7 @@
 			var backpage = arrUrl[arrUrl.length-1].split(".")[0];
 
 			//添加图片名字
-			var links = document.getElementsByClassName("picbox");
+			var links = document.getElementsByClassName("img");
 			for(var i = links.length;i--;){
 				var aLink = links[i].getElementsByTagName("a");
 
